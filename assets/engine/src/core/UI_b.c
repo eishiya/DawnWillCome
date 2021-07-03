@@ -147,11 +147,22 @@ void UIShowText_b() __banked {
   UWORD var_index;
   UBYTE i, l;
 
-  ui_block = TRUE;
+  // ui_block = TRUE; //---------------------------------------------------------------------------------
+  if(ui_interactable){
+    ui_block = TRUE;
+  }
+  // -----------------------------------------------------------------------------------------------
   current_text_speed = text_draw_speed;
 
   static unsigned char * src, * dest;
   src = tmp_text_lines + 1, dest = text_lines;
+  //---------- HP Bar mod -----------------------------------------------------
+  unsigned char handlingHPBar = 0;
+  unsigned char * barStart = NULL;
+  unsigned char * lastLineBreak = 0;
+  UBYTE maxHP = 0;
+  UBYTE curHP = 0;
+  //---------------------------------------------------------------------------
   for (i = 0; (*src) && (i != 80u); i++) {
     switch (*src) {
       case '$':
@@ -166,9 +177,41 @@ void UIShowText_b() __banked {
       case '#':
         l = GetToken_b(src + 1, '#', &var_index);
         if (l) {
-          *dest++ = script_variables[var_index] + 0x20u; 
+		  //---------- HP Bar mod -----------------------------------------------------
+		  if(handlingHPBar) {
+			  if(maxHP == 0) { //interpret as maxHP first
+				  maxHP = script_variables[var_index];
+				  if(maxHP == 0)
+				    maxHP = 1;
+				  src += l + 1;
+				  continue;
+			  } else {
+				  src += l + 1; 
+				  curHP = script_variables[var_index];
+				  //allow curHP > maxHP, just as long as it still fits.
+				  //Fill dest with the HP bar, starting at barStart:
+				  for(l = 0; l < maxHP; l++) {
+					  if(barStart + l <= lastLineBreak + 18) {
+						  if(l < curHP)
+							  *dest++ = 157u + 0x20u; //filled circle
+						  else
+							  *dest++ = 156u + 0x20u; //empty circle
+					  } else break;
+				  }
+			      handlingHPBar = 0;
+				  continue;
+			  }
+		  } else {
+			  *dest++ = script_variables[var_index] + 0x20u; 
+              src += l + 1; 
+              continue;
+		  }
+		  //---------------------------------------------------------------------------
+          /*
+		  *dest++ = script_variables[var_index] + 0x20u; 
           src += l + 1; 
           continue;
+		  */
         }
         break;
 
@@ -182,9 +225,25 @@ void UIShowText_b() __banked {
           }
         }
         break;
+	  //---------- HP Bar mod -----------------------------------------------------
+      case 190: //'¾' (158+32):
+		barStart = dest;
+		handlingHPBar = 1;
+		maxHP = 0;
+		curHP = 0;
+		src++;
+		continue;
+	  case '\n':
+	    lastLineBreak = dest;
+		handlingHPBar = 0; //HP bars can't cross line breaks
+		maxHP = 0;
+		curHP = 0;
+		break;
+	//---------------------------------------------------------------------------
     }
     *dest++ = *src++;
   }
+  
   *dest = 0;
 
   if (menu_layout) {
@@ -295,8 +354,12 @@ void UIDrawTextBufferChar_b() {
 }
 
 void UICloseDialogue_b() {
-  UIMoveTo(menu_layout ? MENU_LAYOUT_INITIAL_X : 0, MENU_CLOSED_Y, text_out_speed);
-
+  //---------------------------------------------------------------------------------------------
+  // UIMoveTo(menu_layout ? MENU_LAYOUT_INITIAL_X : 0, MENU_CLOSED_Y, text_out_speed);
+  if(ui_interactable){
+    UIMoveTo(menu_layout ? MENU_LAYOUT_INITIAL_X : 0, MENU_CLOSED_Y, text_out_speed);
+  }
+  //--------------------------------------------------------------------------------------------
   // Reset variables
   text_count = 0;
   text_lines[0] = '\0';
