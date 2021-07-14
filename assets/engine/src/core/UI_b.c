@@ -159,7 +159,7 @@ void UIShowText_b() __banked {
   //---------- HP Bar mod -----------------------------------------------------
   unsigned char handlingHPBar = 0;
   unsigned char * barStart = NULL;
-  unsigned char * lastLineBreak = 0;
+  unsigned char * lastLineBreak = dest;
   UBYTE maxHP = 0;
   UBYTE curHP = 0;
   //---------------------------------------------------------------------------
