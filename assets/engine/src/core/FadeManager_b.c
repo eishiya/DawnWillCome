@@ -12,6 +12,10 @@ static FADE_DIRECTION fade_direction;
 
 static const UBYTE obj_fade_vals[] = {0x00, 0x00, 0x40, 0x80, 0x90, 0xD0, 0xD0};
 static const UBYTE bgp_fade_vals[] = {0x00, 0x00, 0x40, 0x90, 0xA4, 0xE4, 0xE4};
+// Custom third fade hack--
+static const UBYTE obj_fade_partial_vals[] = {0x40, 0x40, 0x80, 0x90, 0x90, 0xD0, 0xD0};
+static const UBYTE bgp_fade_partial_vals[] = {0x50, 0x50, 0x90, 0xA0, 0xA4, 0xE4, 0xE4};
+// ------------------------
 
 static const UBYTE obj_fade_black_vals[] = {0xFF, 0xFF, 0xF8, 0xE4, 0xD4, 0xD0, 0xD0};
 static const UBYTE bgp_fade_black_vals[] = {0xFF, 0xFF, 0xFE, 0xE9, 0xE5, 0xE4, 0xE4};
@@ -59,10 +63,19 @@ void ApplyPaletteChangeColor(UBYTE index) {
 #endif
 
 void ApplyPaletteChangeDMG(UBYTE index) {
-  if (!fade_style) {
+  //if (!fade_style) {
+  // Custom third fade hack--
+  if (fade_style == 0) {
+  // ------------------------
     OBP0_REG = obj_fade_vals[index];
     BGP_REG = bgp_fade_vals[index];
   }
+  // Custom third fade hack--
+  else if(fade_style == 2) {
+	OBP0_REG = obj_fade_partial_vals[index];
+    BGP_REG = bgp_fade_partial_vals[index];
+  }
+  // ------------------------
   else {
     OBP0_REG = obj_fade_black_vals[index];
     BGP_REG = bgp_fade_black_vals[index];
