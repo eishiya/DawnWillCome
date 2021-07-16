@@ -1,5 +1,4 @@
 # Dawn Will Come
-
 This repository contains the GB Studio project files for Dawn Will Come, an entry for the GBCompo21 by eishiya, H0lyhandgrenade, and C_DOS_KEZ.
 The project was built in GBS 2.0 beta5, and may not work in other versions.
 
@@ -9,7 +8,12 @@ Dawn Will Come uses several engine mods in addition to scripts created via the I
 - HP Display mod, which allows automatically generating HP containers based on variables. It was written for this game, but was shared with the community early during the jam.
 - A third fade option hack, which adds a third "partial" fade option. This is used for the combat scenes in the game, and only works for DMG projects. CGB projects will show the black fade when this option is used.
 
-## License
+## Licenses
+The visual artwork and music are licenced under [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/)
+Artwork © H0lyhandgrenade and eishiya
+Music © Kezia Salmon
+
+
 All of the code, including the scripts built in the IDE, are licenced under the MIT license.
 ```
 Original GBS engine code © 2020 Chris Maltby
@@ -21,7 +25,3 @@ The above copyright notice and this permission notice shall be included in all c
 
 THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 ```
-
-The visual artwork and music are licenced under [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/)
-Artwork by H0lyhandgrenade and eishiya
-Music by C_DOS_KEZ
