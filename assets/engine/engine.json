@@ -137,6 +137,16 @@
       ],
       "cType": "UBYTE",
       "defaultValue": 0
+    },
+	{
+      "key": "sound_time",
+      "label": "Beep/Crash Time",
+      "group": "Better Sounds Mod",
+      "type": "slider",
+      "cType": "UBYTE",
+      "defaultValue": 1,
+      "min": 0,
+      "max": 63
     }
   ]
 }

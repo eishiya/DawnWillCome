@@ -74,7 +74,10 @@ void SoundPlayBeep(UBYTE pitch) {
   NR52_REG = 0x80;
 
   // play beep sound on channel 4
-  NR41_REG = 0x01;
+  //NR41_REG = 0x01;
+  // ----- Better Sounds Mod -----
+  NR41_REG = sound_time;
+  // -----------------------------
   NR42_REG = (0x0FU << 4U);
   NR43_REG = 0x20 | 0x08 | pitch;
   NR44_REG = 0x80 | 0x40;
@@ -93,10 +96,13 @@ void SoundPlayCrash() {
   NR52_REG = 0x80;
 
   // play crash sound on channel 4
-  NR41_REG = 0x01;
+  //NR41_REG = 0x01;
+  // ----- Better Sounds Mod -----
+  NR41_REG = sound_time;
+  // -----------------------------
   NR42_REG = (0x0FU << 4U) | 0x02U;
   NR43_REG = 0x13;
-  NR44_REG = 0x80;
+  NR44_REG = 0x80 | 0x40;
 
   // enable volume
   NR50_REG = 0x77;
