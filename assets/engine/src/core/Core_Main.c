@@ -79,12 +79,12 @@ void lcd_update() {
     if (WY_REG != MENU_CLOSED_Y) {
       LYC_REG = WY_REG;
     }
-  } else if (WX_REG == WIN_LEFT_X) {
+  }/* else if (WX_REG == WIN_LEFT_X) { //Dawn Will Come tweak: DO NOT HIDE SPRITES even if the UI is overlapping them. We need them visible.
     // If window is covering entire scan line
     // can just hide all sprites until next frame
     HIDE_SPRITES;
     LYC_REG = 0x0;
-  }
+  }*/
 }
 
 int core_start() {

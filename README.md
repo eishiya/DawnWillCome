@@ -5,9 +5,10 @@ The project was built in GBS 2.0 beta5, and may not work in other versions.
 ## Engine mods
 Dawn Will Come uses several engine mods in addition to scripts created via the IDE:
 - rulz's UI Interactable hack, to allow text boxes to not block input, modified for 2.0.0-e18.
-- HP Display mod, which allows automatically generating HP containers based on variables. It was written for this game, but was shared with the community early during the jam.
+- HP Display mod, which allows automatically generating HP containers based on variables.
 - A third fade option hack, which adds a third "partial" fade option. This is used for the combat scenes in the game, and only works for DMG projects. CGB projects will show the black fade when this option is used.
 - Better Sounds hack, which makes Beep/Crash sound effects respect the duration set in the IDE instead of ignoring it. Beep/Crash sound effects aren't actually used in the game.
+- A hack to disable the automatic hiding of actors when they are overlapped by dialogue windows. This allows the speech bubble tail effect in dialogue scenes.
 
 ## Licenses
 The visual artwork and music are licenced under [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/)
