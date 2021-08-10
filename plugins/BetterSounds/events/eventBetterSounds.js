@@ -66,6 +66,7 @@ export const compile = (input, helpers) => {
 
   let seconds = typeof input.duration === "number" ? input.duration : 0.5;
 
+  engineFieldSetToValue("sound_volume", 0xF0);
   if (input.type === "beep" || !input.type) {
     const pitch = typeof input.pitch === "number" ? input.pitch : 4;
 	let time = Math.floor(64 - 256*seconds);
@@ -86,6 +87,8 @@ export const compile = (input, helpers) => {
       period = 0;
     }
     const toneFrames = Math.min(255, Math.ceil(seconds * 60));
+	engineFieldSetToValue("sound_properties", 0x00);
+	engineFieldSetToValue("sound_pattern", (0x0 << 6) | 0x01);
     soundStartTone(period, toneFrames);
   } else if (input.type === "crash") {
 	let time = Math.floor(64 - 256*seconds);
@@ -95,6 +98,7 @@ export const compile = (input, helpers) => {
 	  time = 63;
 	}
 	engineFieldSetToValue("sound_time", time);
+	engineFieldSetToValue("sound_properties", 0x13);
 	soundPlayCrash();
   }
 

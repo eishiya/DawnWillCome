@@ -51,11 +51,18 @@ void SoundPlayTone(UWORD tone, UBYTE frames) {
   NR52_REG = 0x80;
 
   // play tone on channel 1
-  NR10_REG = 0x00;
+  /*NR10_REG = 0x00;
   NR11_REG = (0x0U << 6U) | 0x01U;
   NR12_REG = (0x0FU << 4U) | 0x00U;
   NR13_REG = (tone & 0x00FF);
+  NR14_REG = 0x80 | ((tone & 0x0700) >> 8U);*/
+  // ----- Better Sounds Mod -----
+  NR10_REG = sound_properties;
+  NR11_REG = sound_pattern;
+  NR12_REG = sound_volume;
+  NR13_REG = (tone & 0x00FF);
   NR14_REG = 0x80 | ((tone & 0x0700) >> 8U);
+  // -----------------------------
 
   // enable volume
   NR50_REG = 0x77;
@@ -96,13 +103,16 @@ void SoundPlayCrash() {
   NR52_REG = 0x80;
 
   // play crash sound on channel 4
-  //NR41_REG = 0x01;
-  // ----- Better Sounds Mod -----
-  NR41_REG = sound_time;
-  // -----------------------------
+  /*NR41_REG = 0x01;
   NR42_REG = (0x0FU << 4U) | 0x02U;
   NR43_REG = 0x13;
+  NR44_REG = 0x80 | 0x40;*/
+  // ----- Better Sounds Mod -----
+  NR41_REG = sound_time;
+  NR42_REG = sound_volume;
+  NR43_REG = sound_properties;
   NR44_REG = 0x80 | 0x40;
+  // -----------------------------
 
   // enable volume
   NR50_REG = 0x77;
