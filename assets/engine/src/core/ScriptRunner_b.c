@@ -1388,6 +1388,14 @@ void Script_IfSavedData_b() {
   RAMPtr = (UBYTE*)RAM_START_PTR;
   jump = 0;
   jump = *RAMPtr == TRUE;
+  //Hack to load in some data from the save before actually loading the save:
+  /*if (jump) {
+	// Load variable value from engine field
+    RAMPtr = (UBYTE*)RAM_START_VARS_PTR;
+    script_variables[0] = RAMPtr[0]; //Event Seed
+    script_variables[2] = RAMPtr[2]; //Days Passed
+  }*/
+  //=========================================
   DISABLE_RAM;
 
   if (jump) {  // True path, jump to position specified by ptr
