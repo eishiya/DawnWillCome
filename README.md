@@ -9,9 +9,10 @@ Dawn Will Come uses several engine mods in addition to scripts created via the I
 - A third fade option hack, which adds a third "partial" fade option. This is used for the combat scenes in the game, and only works for DMG projects. CGB projects will show the black fade when this option is used.
 - Even Better Sounds hack, which allows greater control over the sound effects in GBS. This is used for some of the sound effects.
 - A hack to disable the automatic hiding of actors when they are overlapped by dialogue windows. This allows the speech bubble tail effect in dialogue scenes.
+- The code to move the player in Top Down mode is all commented out to prevent the invisible player from moving around.
 
 ## Licenses
-The visual artwork and music are licenced under [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/)
+The artwork and music are licenced under [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/)
 Artwork © H0lyhandgrenade and eishiya
 Music © Kezia Salmon
 
