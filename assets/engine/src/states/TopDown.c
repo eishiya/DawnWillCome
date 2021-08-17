@@ -43,7 +43,7 @@ void Update_TopDown() {
     }
 
     // Check input to set player movement
-    if (INPUT_RECENT_LEFT) {
+    /*if (INPUT_RECENT_LEFT) {
       player.dir.x = -1;
       player.dir.y = 0;
       player.rerender = TRUE;
@@ -115,7 +115,7 @@ void Update_TopDown() {
           player.moving = TRUE;
         }
       }
-    }
+    }*/
 
     hit_actor = ActorOverlapsPlayer(FALSE);
     if (hit_actor && hit_actor != NO_ACTOR_COLLISON) {
