@@ -1389,12 +1389,14 @@ void Script_IfSavedData_b() {
   jump = 0;
   jump = *RAMPtr == TRUE;
   //Hack to load in some data from the save before actually loading the save:
-  /*if (jump) {
-	// Load variable value from engine field
+  if (jump) {
+	// Load a few variable values
     RAMPtr = (UBYTE*)RAM_START_VARS_PTR;
-    script_variables[0] = RAMPtr[0]; //Event Seed
-    script_variables[2] = RAMPtr[2]; //Days Passed
-  }*/
+    script_variables[7] = RAMPtr[7]; //Cards: Bosses, New Card flag, Game Over flag
+    script_variables[5] = RAMPtr[5]; //Cards: Lv5 characters, beat game, slug, flyers
+    script_variables[47] = RAMPtr[47]; //Cards: Characters survived, all survived, hospital enemies
+    script_variables[66] = RAMPtr[66]; //Cards: School, Library, Office, Warehouse enemies
+  }
   //=========================================
   DISABLE_RAM;
 
