@@ -3,13 +3,14 @@ This repository contains the GB Studio project files for Dawn Will Come, an entr
 The project was made in GBS 2.0 beta5, and may not work in other versions.
 
 ## Engine mods
-Dawn Will Come uses several engine mods in addition to scripts created via the IDE:
+Dawn Will Come uses some engine mods in addition to scripts created via the IDE:
 - rulz's UI Interactable hack, to allow text boxes to not block input, modified for 2.0.0-e18.
 - HP Display mod, which allows automatically generating HP containers based on variables.
 - A third fade option hack, which adds a third "partial" fade option. This is used for the combat scenes in the game, and only works for DMG projects. CGB projects will show the black fade when this option is used.
 - Even Better Sounds hack, which allows greater control over the sound effects in GBS. This is used for some of the sound effects.
 - A hack to disable the automatic hiding of actors when they are overlapped by dialogue windows. This allows the speech bubble tail effect in dialogue scenes.
 - The code to move the player in Top Down mode is all commented out to prevent the invisible player from moving around.
+- A hack to load some variables from a save when checking If Save Is Loaded. This allows collectibles to be accessible prior to loading the save data and to carry over across playthroughs (thanks to pautomas).
 
 ## Licenses
 The artwork and music are licenced under [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/)
