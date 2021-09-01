@@ -38,7 +38,10 @@ void ApplyPaletteChangeColor(UBYTE index) {
     return;
   }
 
-  if (fade_style) {
+  if(fade_style == 2 && index < 1) index = 1; //Custom partial fade, doesn't go all the way to white
+  
+  //if (fade_style) {
+  if (fade_style == 1) {
     for (c = 0; c != 32; ++c, ++col) {
       BkgPaletteBuffer[c] = UpdateColorBlack(index, *col);
     }

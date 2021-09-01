@@ -6,8 +6,8 @@ The project was made in GBS 2.0 beta5, and may not work in other versions.
 Dawn Will Come uses some engine mods in addition to scripts created via the IDE:
 - rulz's UI Interactable hack, to allow text boxes to not block input, modified for 2.0.0-e18.
 - HP Display mod, which allows automatically generating HP containers based on variables.
-- A third fade option hack, which adds a third "partial" fade option. This is used for the combat scenes in the game, and only works for DMG projects. CGB projects will show the black fade when this option is used.
-- Even Better Sounds hack, which allows greater control over the sound effects in GBS. This is used for some of the sound effects.
+- A hack to add a partial fade option. This is used for brief flashes in combat, and should not be used for transitions.
+- Precise Sounds mod, which allows greater control over the sound effects in GBS. This is used for some of the sound effects.
 - A hack to disable the automatic hiding of actors when they are overlapped by dialogue windows. This allows the speech bubble tail effect in dialogue scenes.
 - The code to move the player in Top Down mode is all commented out to prevent the invisible player from moving around.
 - A hack to load some variables from a save when checking If Save Is Loaded. This allows collectibles to be accessible prior to loading the save data and to carry over across playthroughs (thanks to pautomas).
