@@ -11,6 +11,7 @@ Dawn Will Come uses some engine mods in addition to scripts created via the IDE:
 - A hack to disable the automatic hiding of actors when they are overlapped by dialogue windows. This allows the speech bubble tail effect in dialogue scenes.
 - The code to move the player in Top Down mode is all commented out to prevent the invisible player from moving around.
 - A hack to load some variables from a save when checking If Save Is Loaded. This allows collectibles to be accessible prior to loading the save data and to carry over across playthroughs (thanks to pautomas).
+- A hack to make fades in Color Mode behave like DMG fades, using the four colours of the palette without changing them. It only works correctly for monochrome games because it assumes sprite palettes are the same as background palettes.
 
 ## Licenses
 The artwork and music are licenced under [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/)

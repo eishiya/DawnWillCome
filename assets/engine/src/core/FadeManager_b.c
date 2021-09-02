@@ -28,8 +28,15 @@ UWORD UpdateColorBlack(UINT8 i, UWORD col) {
 
 void ApplyPaletteChangeColor(UBYTE index) {
   UINT8 c;
-  UWORD paletteWhite;
+  //UWORD paletteWhite; //Unused by DMG-style fades on CGB
   UWORD* col = BkgPalette;
+  
+  // DMG-style fades on CGB. -------------
+  UINT8 pi; //palette index
+  UBYTE coltype; //0~3 from lightest to darkest
+  UBYTE* bgpalette; //which DMG palettes shall we use?
+  UBYTE* objpalette;
+  // -------------------------------------
 
   if (index == 5) {
     memcpy(BkgPaletteBuffer, BkgPalette, 64);
@@ -37,11 +44,8 @@ void ApplyPaletteChangeColor(UBYTE index) {
     palette_dirty = TRUE;
     return;
   }
-
-  if(fade_style == 2 && index < 1) index = 1; //Custom partial fade, doesn't go all the way to white
   
-  //if (fade_style) {
-  if (fade_style == 1) {
+  /*if (fade_style) {
     for (c = 0; c != 32; ++c, ++col) {
       BkgPaletteBuffer[c] = UpdateColorBlack(index, *col);
     }
@@ -59,7 +63,34 @@ void ApplyPaletteChangeColor(UBYTE index) {
     for (c = 0; c != 32; ++c, ++col) {
       SprPaletteBuffer[c] = (UWORD)*col | paletteWhite;
     }
+  }*/
+  // DMG-style fades on CGB. -------------
+  if(fade_style == 1) {
+	bgpalette = (UBYTE*)bgp_fade_black_vals;
+	objpalette = (UBYTE*)obj_fade_black_vals;
+  } else if(fade_style == 2) {
+	bgpalette = (UBYTE*)bgp_fade_partial_vals;
+	objpalette = (UBYTE*)obj_fade_partial_vals;
+  } else {
+	bgpalette = (UBYTE*)bgp_fade_vals;
+	objpalette = (UBYTE*)obj_fade_vals;
   }
+  for(c = 0; c < 8; ++c) {
+	for(pi = 0; pi < 4; ++pi) {
+		coltype = (bgpalette[index] & (0x03 << (pi*2))) >> (pi*2);
+		BkgPaletteBuffer[c*4 + pi] = (UWORD)(col[c*4 + coltype]);
+	}
+  }
+  //col = SprPalette;
+  //Keep using the background palettes, so that sprites can use the dark green part of the palette.
+  //Make sure sprite and background palettes are the same!
+  for(c = 0; c < 8; ++c) {
+	for(pi = 0; pi < 4; ++pi) {
+		coltype = (objpalette[index] & (0x03 << (pi*2))) >> (pi*2);
+		SprPaletteBuffer[c*4 + pi] = (UWORD)(col[c*4 + coltype]);
+	}
+  }
+  // END DMG-style fades on CGB ----------
 
   palette_dirty = TRUE;
 }
