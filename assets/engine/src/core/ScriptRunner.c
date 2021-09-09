@@ -168,7 +168,8 @@ void ScriptRestoreCtx(UBYTE i) {
   // Limit background scripts from running too many commands per frame
   // to reduce ability for large scripts to cause slowdown 
   if (i == 0) {
-    ctx_cmd_remaining = 255;
+    //ctx_cmd_remaining = 255;
+    ctx_cmd_remaining = 150; //Above 236-ish, too many scripts are allowed to run, overflowing and crashing the game. A lower limit gives some safety margin for heavier events, such as switches.
   } else {
     ctx_cmd_remaining = 2;
   }
