@@ -12,7 +12,7 @@ Dawn Will Come uses some engine mods in addition to scripts created via the IDE:
 - The code to move the player in Top Down mode is all commented out to prevent the invisible player from moving around.
 - A hack to load some variables from a save when checking If Save Is Loaded. This allows collectibles to be accessible prior to loading the save data and to carry over across playthroughs (thanks to pautomas).
 - A hack to make fades in Color Mode behave like DMG fades, using the four colours of the palette without changing them. It only works correctly for monochrome games because it assumes sprite palettes are the same as background palettes. Due to a bug in the version of gbdk2020 GBS uses, in Color Mode, this fade can leave some black tiles on the screen during fades.
-- The limit on how many On Init events can run within a single frame is reduced to compensate for heavy switches and prevent stack overflow.
+- The limit on how many On Init events can run within a single frame is reduced to compensate for heavy switches, to prevent stack overflow.
 
 ## Licenses
 The artwork and music are licenced under [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/)
