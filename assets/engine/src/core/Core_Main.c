@@ -247,6 +247,25 @@ int core_start() {
     }
 
     game_time++;
+	
+	// ================ Game Timer Mod ================
+	if(gametime_on > 0) {
+		gametime_frames++;
+		if(gametime_frames == 60) {
+			gametime_frames = 0;
+			gametime_sec++;
+			if(gametime_sec == 60) {
+				gametime_sec = 0;
+				gametime_min++;
+				if(gametime_min == 60) {
+					gametime_min = 0;
+					if(gametime_hours < 255) gametime_hours++;
+				}
+			}
+		}
+	}
+	// ============== END Game Timer Mod ==============
+	
 
     POP_BANK;
 
