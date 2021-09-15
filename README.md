@@ -1,5 +1,6 @@
 # Dawn Will Come
 This repository contains the GB Studio project files for Dawn Will Come, an entry for the GBCompo21 by eishiya, H0lyhandgrenade, and C_DOS_KEZ.
+
 The project was made in GBS 2.0 beta5, and will probably not work in other versions.
 
 ## Engine mods
@@ -17,7 +18,9 @@ Dawn Will Come uses some engine mods in addition to scripts created via the IDE:
 
 ## Licenses
 The artwork and music are licenced under [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/)
+
 Artwork © H0lyhandgrenade and eishiya
+
 Music © Kezia Salmon
 
 
